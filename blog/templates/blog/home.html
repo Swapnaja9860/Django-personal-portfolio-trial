@@ -1,0 +1,13 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<h1>hey I am in blog app</h1>
+
+<h2>Swap has written {{subproject_blogs.count}}blog{{subproject_blogs.count|pluralize}}</h2>
+{% for sub in subproject_blogs %}
+<a href="{% url 'blog:detail' sub.id %}"><h2>{{sub.title}}</h2></a>
+{{sub.date | date:'M d Y'|upper}}<br>
+{{sub.description |striptags| truncatechars:60}}<br><br> 
+{% endfor %}
+{% endblock %}
